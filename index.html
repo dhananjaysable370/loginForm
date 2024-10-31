@@ -7,16 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-screen w-screen flex items-center justify-center">
+<body class="h-screen w-screen flex items-center justify-center bg-zinc-800 text-white">
     <div>
-        <h1> pakda pakdi login form</h1>
+        <h1 class="text-2xl font-bold my-7 uppercase text-white">pakda pakdi login form</h1>
         <form action="" class="flex flex-col gap-3 w-96">
-            <input type="text" name="name" class="border rounded-md border-zinc-500 px-5 py-2"
-                placeholder="nav tak itha ">
-            <input type="password" class="border rounded-md border-zinc-500 px-5 py-2" placeholder="gupit password tak">
+            <input type="text" id="nameInput"
+                class="border font-bold text-black bg-gray-400 rounded-md border-zinc-500 px-5 py-2"
+                placeholder="Nav tak itha">
+            <input type="password" id="passwordInput"
+                class="bg-gray-400 font-bold text-black border rounded-md border-zinc-500 px-5 py-2"
+                placeholder="Gupit password tak">
             <div class="btn-container" style="position: relative;">
                 <button id="toggleButton"
-                    class="px-5 py-2 bg-zinc-600 hover:bg-zinc-700 text-white rounded-md absolute left-0 transition-transform duration-300">Submit</button>
+                    class="px-5 py-2 bg-zinc-600 hover:bg-zinc-700 text-white rounded-md absolute left-0 transition-all duration-300">Submit</button>
             </div>
         </form>
     </div>
@@ -24,6 +27,15 @@
     <script>
         function toggleButtonPosition() {
             const button = document.getElementById('toggleButton');
+            const nameInput = document.getElementById('nameInput').value;
+            const passwordInput = document.getElementById('passwordInput').value;
+
+            if (nameInput && passwordInput) {
+                button.classList.add('w-full');
+                button.classList.remove('left-0', 'right-0');
+                button.style.position = 'static';
+                return;
+            }
 
             if (button.classList.contains('left-0')) {
                 button.classList.remove('left-0');
